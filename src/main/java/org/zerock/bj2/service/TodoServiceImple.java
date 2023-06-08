@@ -9,6 +9,7 @@ import org.zerock.bj2.dto.TodoDTO;
 import org.zerock.bj2.mappers.TimeMapper;
 import org.zerock.bj2.mappers.TodoMapper;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -19,6 +20,8 @@ public class TodoServiceImple implements TodoService{
   
   private final TimeMapper timeMapper;
   private final TodoMapper todoMapper;
+
+  
 
   @Override
   public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
