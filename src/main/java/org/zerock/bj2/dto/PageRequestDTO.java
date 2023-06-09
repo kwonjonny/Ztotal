@@ -36,6 +36,7 @@ public class PageRequestDTO {
     }
   }
 
+  // Mysql은 식이 안들어가서 DTO에서 처리 후 ${skip}, ${size}로 처리
   public int getSkip(){
     return (this.page -1) * this.size;
   }
@@ -46,8 +47,7 @@ public class PageRequestDTO {
 
   public int getCountEnd() {
 
-    int temp = (int) (Math.ceil(this.page/10.0)) * 100;
-
+    int temp = (int) (Math.ceil(this.page/10.0)) * (10*size);
 
     return temp + 1;
   }

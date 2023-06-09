@@ -3,6 +3,7 @@ package org.zerock.bj2.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.bj2.dto.PageRequestDTO;
 import org.zerock.bj2.dto.PageResponseDTO;
@@ -22,11 +23,22 @@ public class TodoController {
 
   @GetMapping("list")
   public void list(PageRequestDTO pageRequestDTO, Model model){
-
-    PageResponseDTO<TodoDTO> pageResponseDTO
-            = todoService.getList(pageRequestDTO);
+    PageResponseDTO<TodoDTO> pageResponseDTO = todoService.getList(pageRequestDTO);
 
     model.addAttribute("pageResponseDTO", pageResponseDTO);
+   }
 
-  }
+   // node
+   @GetMapping("read/{tno}")
+   public String read(
+    PageRequestDTO pageRequestDTO,
+    @PathVariable("tno") Long tno
+    ){
+
+    log.info("GET | /todo/read/"+tno);
+
+    return "todo/read";
+
+   }
+
 }
